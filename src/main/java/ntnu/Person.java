@@ -1,15 +1,30 @@
 package ntnu;
 
-public abstract class Person {
+public abstract class Person{
 
     private String firstName;
     private String LastName;
     private String socialSecurityNumber;
 
-    public Person (String firstName, String lastName, String socialSecurityNumber){
-        this.firstName = firstName;
-        this.LastName = lastName;
-        this.socialSecurityNumber = socialSecurityNumber;
+    public Person (String firstName, String lastName, String socialSecurityNumber) throws  IllegalArgumentException{
+
+            if(firstName == null){
+                firstName = "";
+            }
+            if(lastName == null){
+                lastName = "";
+            }
+            if(socialSecurityNumber == null){
+                socialSecurityNumber = "";
+            }
+
+            if(firstName.isBlank() || lastName.isBlank() || socialSecurityNumber.isBlank()){
+               throw new IllegalArgumentException("Firstname, lastname or personnumber cant be null.");
+            }
+
+            this.firstName = firstName.trim();
+            this.LastName = lastName.trim();
+            this.socialSecurityNumber = socialSecurityNumber.trim();
 
     }
 
@@ -38,7 +53,7 @@ public abstract class Person {
     }
 
     public String getFullName(){
-        return firstName+""+LastName+""+socialSecurityNumber;
+        return firstName+" "+LastName+" PersonNumber:"+socialSecurityNumber;
     }
 
     public void changeName(String newFirst, String newLast){
@@ -50,6 +65,10 @@ public abstract class Person {
         }
     }
 
-    public abstract String toString();
+
+
+    public String toString(){
+        return getFullName();
+    }
 
 }

@@ -3,7 +3,7 @@ package ntnu;
 public class Patient extends Person implements Diagnosable {
     private String diagnosis;
 
-    public Patient(String firstName, String lastName, String personNumber){
+    protected Patient(String firstName, String lastName, String personNumber){
         super(firstName, lastName, personNumber);
     }
 
