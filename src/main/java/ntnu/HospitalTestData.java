@@ -13,7 +13,7 @@ public class HospitalTestData {
 
         // Add some departments
 
-        try {
+
             Department emergencyRoom = new Department("Akutten");
             emergencyRoom.addEmployee(new Employee("OddEven", "Primtallet", "34"));
             emergencyRoom.addEmployee(new Employee("Huppasahn", "DelFinito", "342"));
@@ -24,37 +24,15 @@ public class HospitalTestData {
             emergencyRoom.addPatient(new Patient("Ove", "Ralt", "134234"));
             hospital.addDepartment(emergencyRoom);
 
-        } catch (IllegalArgumentException e){
-            System.out.println("An error occured printing one of the Departments. Check if you add persons correctly.");
-        }
-
-
-
-        try
-        {
             Department childrensPolyclinic = new Department("Barne poliklinikk");
-            childrensPolyclinic.addEmployee(new Employee("Salti", "Kaffen", null));
-            childrensPolyclinic.addEmployee(new Employee("Nidel V.", "Elveflger", null));
-            childrensPolyclinic.addEmployee(new Nurse("Anton", "Nym", null));
-            childrensPolyclinic.addEmployee(new GeneralPractitioner("Gene", "Sis", null));
-            childrensPolyclinic.addPatient(new Patient("Nanna", "Na", null));
-            childrensPolyclinic.addPatient(new Patient("Nora", "Toriet", null));
+            childrensPolyclinic.addEmployee(new Employee("Salti", "Kaffen", "52345"));
+            childrensPolyclinic.addEmployee(new Employee("Nidel V.", "Elveflger", "34234"));
+            childrensPolyclinic.addEmployee(new Nurse("Anton", "Nym", "123445"));
+            childrensPolyclinic.addEmployee(new GeneralPractitioner("Gene", "Sis", "12344"));
+            childrensPolyclinic.addPatient(new Patient("Nanna", "Na", "124234"));
+            childrensPolyclinic.addPatient(new Patient("Nora", "Toriet", "1234"));
             hospital.addDepartment(childrensPolyclinic);
 
-        } catch (IllegalArgumentException e){
-            System.out.println("An error occured printing one of the Departments. Check if you added persons correctly.");
-        }
-
-
-
     }
 
-    public static void main(String[] args) {
-        Hospital hospital = new Hospital("AKERSHUS");
-
-        fillRegisterWithTestData(hospital);
-
-        System.out.println(hospital.getDepartments().get(0).getEmployees());
-
-    }
 }

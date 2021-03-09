@@ -21,6 +21,11 @@ public class Department {
         this.persons = new HashMap<>();
     }
 
+
+    public HashMap<String,Person> getPersonList(){
+        return this.persons;
+    }
+
     /**
      * Sets the name of the Department.
      * @param departmentName
@@ -44,7 +49,7 @@ public class Department {
     public List<Employee> getEmployees(){
         List<Employee> employees = new ArrayList<>();
 
-        persons.values().forEach((person) ->
+        this.persons.values().forEach((person) ->
                 {
                     if (person instanceof Employee)
                     {
@@ -60,7 +65,11 @@ public class Department {
      * @param employee
      */
     public void addEmployee(Employee employee) throws IllegalArgumentException{
-        this.persons.put(employee.getPersonNumber(), employee);
+        if(employee != null) {
+            this.persons.put(employee.getPersonNumber(), employee);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -70,24 +79,25 @@ public class Department {
     public List<Patient> getPatient(){
         List<Patient> patients = new ArrayList<>();
 
-        this.persons.forEach((String, person) ->
+        this.persons.values().forEach((person) ->
                 {
                     if(person instanceof Patient)
                     patients.add((Patient) person);
                 }
         );
-
         return patients;
     }
 
     /**
      * Adds an Patient to Person Hashmap.
-     * @param patient
+     * @param patient Adds Person objekt
      */
     public void addPatient(Patient patient) throws IllegalArgumentException{
 
         if (patient != null){
             this.persons.put(patient.getPersonNumber(), patient);
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
@@ -110,6 +120,8 @@ public class Department {
      * @param person
      * @throws RemoveException
      */
+
+
     public void removePerson(Person person) throws RemoveException{
 
         if(persons.containsKey(person.getPersonNumber())){
@@ -119,7 +131,9 @@ public class Department {
         }
     }
 
-
+    /**
+     * Returns a string representation of the object. In general, the toString method returns a string that "textually represents" this object.
+     */
     public String toString(){
         return getDepartmentName();
     }

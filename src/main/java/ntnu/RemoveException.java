@@ -5,6 +5,5 @@ public class RemoveException extends Exception {
 
     public RemoveException(String text){
         super(text);
-
     }
 }

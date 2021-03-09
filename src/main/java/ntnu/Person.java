@@ -53,7 +53,7 @@ public abstract class Person{
     }
 
     public String getFullName(){
-        return firstName+" "+LastName+" PersonNumber:"+socialSecurityNumber;
+        return firstName+" | Lastname: "+LastName+"| PersonNumber: "+socialSecurityNumber;
     }
 
     public void changeName(String newFirst, String newLast){
