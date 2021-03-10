@@ -1,5 +1,10 @@
 package ntnu;
 
+import java.util.Comparator;
+
+/**
+ * Abstract class with the information to every person added.
+ */
 public abstract class Person{
 
     private String firstName;
@@ -28,34 +33,67 @@ public abstract class Person{
 
     }
 
+    /**
+     * Gives you the perosnnumber of an person.
+     * @return
+     */
     public String getPersonNumber(){
         return this.socialSecurityNumber;
     }
 
+    /**
+     * Sets the personnumber of an person.
+     * @param personNumber
+     */
     public void setPersonNumber(String personNumber){
         this.socialSecurityNumber = personNumber;
     }
 
+    /**
+     * Sets the firstname of an person.
+     * @param firstName
+     */
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
 
+    /**
+     * Sets the lastname of an person.
+     * @param lastName
+     */
     public void setLastName(String lastName){
         this.LastName = lastName;
     }
 
+    /**
+     * Gets the lastname of an added person.
+     * @return
+     */
     public String getLastName(){
         return this.LastName;
     }
 
+    /**
+     * Gets the firstname of an added person.
+     * @return
+     */
     public String getFirstName(){
         return this.firstName;
     }
 
+    /**
+     * Gets the fullname of an added person.
+     * @return
+     */
     public String getFullName(){
-        return firstName+" | Lastname: "+LastName+"| PersonNumber: "+socialSecurityNumber;
+        return firstName+" "+LastName+" "+socialSecurityNumber;
     }
 
+    /**
+     * Changes the name of an added person.
+     * @param newFirst
+     * @param newLast
+     */
     public void changeName(String newFirst, String newLast){
         if (!newFirst.equals("")){
             this.firstName = newFirst;
@@ -66,7 +104,10 @@ public abstract class Person{
     }
 
 
-
+    /**
+     * Returns a string representation of the person object.
+     * @return
+     */
     public String toString(){
         return getFullName();
     }

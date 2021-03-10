@@ -9,19 +9,19 @@ public class HospitalTestData {
      *
      * @param hospital the hospital to be populated with testdata
      */
-    public static void fillRegisterWithTestData(final Hospital hospital) {
+    public static void fillRegisterWithTestData(final Hospital hospital){
 
         // Add some departments
 
 
             Department emergencyRoom = new Department("Akutten");
-            emergencyRoom.addEmployee(new Employee("OddEven", "Primtallet", "34"));
-            emergencyRoom.addEmployee(new Employee("Huppasahn", "DelFinito", "342"));
-            emergencyRoom.addEmployee(new Nurse("Rigmor", "Mortis", "234"));
-            emergencyRoom.addEmployee(new GeneralPractitioner("Inco", "Gnito", "234"));
-            emergencyRoom.addEmployee(new Surgeon("Inco", "Gnito", "324"));
-            emergencyRoom.addPatient(new Patient("Nina", "Teknologi", "124"));
-            emergencyRoom.addPatient(new Patient("Ove", "Ralt", "134234"));
+            emergencyRoom.addEmployee(new Employee("OddEven", "Primtallet", "34345"));
+            emergencyRoom.addEmployee(new Employee("Huppasahn", "DelFinito", "342345"));
+            emergencyRoom.addEmployee(new Nurse("Rigmor", "Mortis", "234453"));
+            emergencyRoom.addEmployee(new GeneralPractitioner("Inco", "Gnito", "234345"));
+            emergencyRoom.addEmployee(new Surgeon("Inco", "Gnito", "53453"));
+            emergencyRoom.addPatient(new Patient("Nina", "Teknologi", "12445"));
+            emergencyRoom.addPatient(new Patient("Ove", "Ralt", "65644"));
             hospital.addDepartment(emergencyRoom);
 
             Department childrensPolyclinic = new Department("Barne poliklinikk");
@@ -30,7 +30,7 @@ public class HospitalTestData {
             childrensPolyclinic.addEmployee(new Nurse("Anton", "Nym", "123445"));
             childrensPolyclinic.addEmployee(new GeneralPractitioner("Gene", "Sis", "12344"));
             childrensPolyclinic.addPatient(new Patient("Nanna", "Na", "124234"));
-            childrensPolyclinic.addPatient(new Patient("Nora", "Toriet", "1234"));
+            childrensPolyclinic.addPatient(new Patient("Nora", "Toriet", "12345"));
             hospital.addDepartment(childrensPolyclinic);
 
     }

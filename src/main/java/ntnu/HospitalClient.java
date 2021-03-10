@@ -13,8 +13,6 @@ public class HospitalClient {
      */
     public static void init(){
         hospital = new Hospital("Akershus");
-        department = hospital.getDepartments().get(0);
-
 
         try{
 
@@ -25,6 +23,7 @@ public class HospitalClient {
             System.out.println("An error occured printing one of the Departments. Check if you added persons correctly.");
 
         }
+        department = hospital.getDepartments().get(0);
     }
 
 
@@ -34,8 +33,9 @@ public class HospitalClient {
     public static void removePersonValid(){
 
         try{
-        department.removePerson(department.getEmployees().get(0));
             System.out.println("Person:  "+ department.getEmployees().get(0) + " has been removed.");
+            department.removePerson(department.getEmployees().get(0));
+            System.out.println(hospital.getDepartments().get(0).getPersonList().values());
         } catch (RemoveException e){
             e.printStackTrace();
         }
@@ -47,15 +47,31 @@ public class HospitalClient {
      */
     public static void removePersonInvalid() throws RemoveException {
 
-        Employee employee = new Employee("Håkon", "Sætre", "310799");
+        Patient patient = new Patient("Håkon", "Sætre", "310799");
 
         try{
-            department.removePerson(employee);
+            department.removePerson(patient);
         } catch (RemoveException e) {
-            e.printStackTrace();
+            System.out.println("---------------------------");
+            System.out.println("Trying to remove a person that dont exist in Department: ");
+            System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * Method that prints out List of persons And removes person from removePersonValid method.
+     */
+    public static void start(){
+        System.out.println("----------------------------");
+        System.out.println(hospital.getDepartments());
+        System.out.println("----------------------------");
+        System.out.println("Entering Akutten and printing all of the Persons in Department");
+        System.out.println("----------------------------");
+        System.out.println(hospital.getDepartments().get(0).getPersonList().values());
+        System.out.println("----------------------------");
+        System.out.println("Removing person.");
+        removePersonValid();
+    }
 
     /**
      * Starts the applications, 3 methods.
@@ -64,7 +80,7 @@ public class HospitalClient {
      */
     public static void main(String[] args) throws RemoveException {
         init();
-        removePersonValid();
+        start();
         removePersonInvalid();
     }
 }

@@ -17,11 +17,22 @@ public class Department {
      * @param departmentName
      */
     public Department(String departmentName){
+        if (departmentName == null){
+            departmentName = "";
+        }
+
+        if(departmentName.isBlank()){
+            throw new IllegalArgumentException();
+        }
+
         this.departmentName = departmentName;
         this.persons = new HashMap<>();
     }
 
-
+    /**
+     * Hashmap with all the persons added.
+     * @return Map with keys and values.
+     */
     public HashMap<String,Person> getPersonList(){
         return this.persons;
     }
@@ -49,20 +60,22 @@ public class Department {
     public List<Employee> getEmployees(){
         List<Employee> employees = new ArrayList<>();
 
-        this.persons.values().forEach((person) ->
+        this.persons.values().forEach((person) -> //loops through hashmap.
                 {
                     if (person instanceof Employee)
                     {
-                        employees.add((Employee) person);
+                        employees.add((Employee) person); //adds all the Employees in hashmap to new arraylist
                     }
                 }
                 );
+        //employees.sort(((o1, o2) -> o1.getPersonNumber().compareTo(o2.getPersonNumber())));
+
         return employees;
     }
 
     /**
      * Adds an Employee to the Person Hashmap.
-     * @param employee
+     * @param employee The added object.
      */
     public void addEmployee(Employee employee) throws IllegalArgumentException{
         if(employee != null) {
@@ -85,6 +98,7 @@ public class Department {
                     patients.add((Patient) person);
                 }
         );
+        //patients.sort(((o1, o2) -> o1.getPersonNumber().compareTo(o2.getPersonNumber())));
         return patients;
     }
 
@@ -119,15 +133,14 @@ public class Department {
      * Removes a Person from the Hashmap if it contains personnumber.
      * @param person
      * @throws RemoveException
+     * @return
      */
-
-
     public void removePerson(Person person) throws RemoveException{
 
         if(persons.containsKey(person.getPersonNumber())){
             persons.remove(person.getPersonNumber());
         } else {
-            throw new RemoveException("This person cant be Removed.");
+            throw new RemoveException("Person " + person.getFirstName() + " cant be removed from department. Person doesn´t exist.");
         }
     }
 
