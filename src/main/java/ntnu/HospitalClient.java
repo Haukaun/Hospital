@@ -2,6 +2,11 @@ package ntnu;
 
 import java.util.Scanner;
 
+/**
+ * HospitalClient Runs Remove test methods
+ * @author (Håkon)
+ * @version (0.1v)
+ */
 public class HospitalClient {
 
     private static Hospital hospital;
